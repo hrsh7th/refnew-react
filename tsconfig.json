@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["es2015.proxy", "esnext", "dom"],
+    "jsx": "react",
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "newLine": "LF",
+    "sourceMap": true,
+    "declaration": true
+  },
+  "include": ["src/**/*", "reflect-metadata/typings.d.ts"]
+}
