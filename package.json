@@ -1,6 +1,6 @@
 {
   "name": "refnew-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "refnew react binding.",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
