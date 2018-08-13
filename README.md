@@ -12,7 +12,6 @@ refnew bindings for react.
 
 ```ts
 // index.ts
-import { refnew } from "refnew";
 import { create } from "refnew-react";
 import React from "react";
 import ReactDOM from "react-dom";

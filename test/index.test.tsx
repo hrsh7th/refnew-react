@@ -1,6 +1,5 @@
 import * as React from "react";
 import { create as render } from "react-test-renderer";
-import { refnew } from "refnew";
 import { create } from "../src";
 
 const State = {
@@ -18,7 +17,7 @@ test("Should re-rendering only part of consumers.", () => {
   const select1 = (state: State) => state.consumer1;
   const select2 = (state: State) => state.consumer2;
   const component = render(
-    <Provider value={refnew(State)}>
+    <Provider value={State}>
       <Consumer select={select1}>
         {state => (
           <div>

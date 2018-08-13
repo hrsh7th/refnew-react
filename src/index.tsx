@@ -1,8 +1,9 @@
 import React from "react";
+import { refnew } from "refnew";
 import shallowequal from "shallowequal";
 
 export type ProviderProps<State> = {
-  value?: State;
+  value: State;
   children: JSX.Element | JSX.Element[];
 };
 
@@ -47,14 +48,24 @@ export function create<State extends object>(): {
    */
   const RefnewProvider = class RefnewProvider extends React.Component<
     ProviderProps<State>,
-    { version: number }
+    { version: number; value: { state: State } }
   > {
-    public state = { version: 0 };
+    public constructor(props: ProviderProps<State>) {
+      super(props);
+      this.state = {
+        version: 0,
+        value: refnew({
+          state: props.value
+        })
+      };
+    }
 
     public componentDidMount() {
       updator = (mutator?: (state: State) => void) => {
         mutator && mutator(this.props.value!);
-        this.setState({ version: this.state.version + 1 });
+        this.setState({
+          version: this.state.version + 1
+        });
       };
     }
 
@@ -63,12 +74,8 @@ export function create<State extends object>(): {
     }
 
     public render() {
-      const { children, value } = this.props;
-      return (
-        <Provider value={Proxy.revocable<State>(value!, {}).proxy}>
-          {children}
-        </Provider>
-      );
+      const { children } = this.props;
+      return <Provider value={this.state.value.state}>{children}</Provider>;
     }
   };
 
